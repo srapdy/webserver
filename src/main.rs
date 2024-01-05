@@ -11,7 +11,7 @@ fn main() {
 
     let pool = ThreadPool::new(2);
 
-    for stream in listener.incoming() {
+    for stream in listener.incoming().take(2) {
        let stream = stream.unwrap();
        //thread::spawn(|| handle_connection(stream));
        pool.execute(|| {
